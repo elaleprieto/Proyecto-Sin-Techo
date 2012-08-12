@@ -1,0 +1,11 @@
+.imagen {
+	width: 50%;
+	display: inline-block;
+	text-align: center;
+}
+.texto {
+	width: 50%;
+	text-align: justify;
+	float: right;
+	display: inline-block;
+}

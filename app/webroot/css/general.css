@@ -110,11 +110,12 @@ footer {
 	padding: 6px 10px;
 	text-align: right;
 	-moz-box-sizing: border-box;
-    background-color: #FFDC73;
     bottom: 0;
     position: fixed;
     top: auto;
     width: 100%;
+    background-color: #003d4c;
+    text-align: center;
 }
 
 /** containers **/
@@ -743,4 +744,9 @@ pre {
 /** Elements **/
 #url-rewriting-warning {
 	display:none;
+}
+#layout_nube {
+	width: 20px;
+	height: 20px;
+	vertical-align: bottom;
 }

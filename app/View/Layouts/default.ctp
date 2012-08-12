@@ -17,19 +17,20 @@
  */
 
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$appDescription = __d('app_dev', 'Proyecto Sin Techo');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
+		<?php echo $appDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('general');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -39,7 +40,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+			<h1><?php echo $this->Html->link($appDescription, 'http://proyectosintecho.com.ar'); ?></h1>
 		</div>
 		<div id="content">
 
@@ -47,14 +48,15 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<div id="footer">
+		<footer>
 			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
+					$this->Html->image('nube.png', array('alt' => $appDescription, 'border' => '0', 'id' => 'layout_nube')),
+					'http://www.proyectosintecho.com.ar/',
 					array('target' => '_blank', 'escape' => false)
 				);
 			?>
-		</div>
+			<span>UTN - FRSF :: Proyecto Final de Carrera :: María Celeste Weidmann y Alejandro Esteban Prieto.  </span>
+		</footer>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
