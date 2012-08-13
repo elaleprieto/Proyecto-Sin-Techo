@@ -5,11 +5,11 @@ $(document).ready(function() {
 	$("#jquery_jplayer_1").jPlayer({
 		ready : function() {
 			$(this).jPlayer("setMedia", {
-				webmv : "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm",
+				webmv : "files/Big_Buck_Bunny_Trailer.webm",
 				poster : "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
 			}).jPlayer("play");
 		},
-		// swfPath : "/js",
+		swfPath : "files",
 		supplied : "webmv",
 		cssSelector : {
 			videoPlay : '.jp-video-play',
@@ -18,4 +18,6 @@ $(document).ready(function() {
 			stop : '.jp-stop',
 		}
 	});
+	
+	$(".jp-stop").jPlayer("stop");
 });
