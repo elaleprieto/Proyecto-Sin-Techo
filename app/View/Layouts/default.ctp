@@ -39,9 +39,9 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 </head>
 <body>
 	<div id="container">
-		<div id="header">
+		<header>
 			<h1><?php echo $this->Html->link($appDescription, 'http://proyectosintecho.com.ar'); ?></h1>
-		</div>
+		</header>
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
