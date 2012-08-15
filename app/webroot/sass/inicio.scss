@@ -5,6 +5,7 @@
 @include font-face("Sansation", font-files("sansation/Sansation_Regular.ttf"));
 @include font-face("Neuton", font-files("neuton/Neuton-Regular.ttf"));
 @include font-face("Linux Libertine", font-files("linux_libertine/LinLibertine_RB.ttf"));
+
  
 $color-inicial: #89D7D7;
 $color-final: darken($color-inicial, 50%);
@@ -39,8 +40,9 @@ body {
   @include base(40%, justify, inline-block);
   padding-right: 5%;
   padding-left: 1%;
-  padding-top: 4%;
+  padding-top: 2%;
   min-width: 390px;
   font-family: "Linux Libertine";
-  font-size: 1.5em; 
+  font-size: 1.7em; 
+  color: #255C5C;
 }

@@ -1,4 +1,8 @@
 @charset "utf-8";
+@import "compass";
+
+@include font-face("Airplanes in the Night Sky", font-files("airplanes_in_the_night_sky/Airplanes in the Night Sky.ttf"));
+@include font-face("Foglihten 04", font-files("foglihtenno04/FoglihtenNo04-070.otf"));
 /**
  *
  * Generic CSS for CakePHP
@@ -81,12 +85,14 @@ header{
   // padding: 10px 20px;
 }
 header h1 {
-  line-height:20px;
+  line-height: 30px;
   background: #003d4c url('../img/nube.png') no-repeat left;
-  background-size:20px 20px;
+  background-size: 30px 30px;
   color: #fff;
   margin-bottom: 0;
-  padding: 0px 30px;
+  padding: 0px 40px;
+  font-family: "Foglihten 04";
+  font-size: 120%;
 }
 header h1 a {
   color: #fff;
@@ -111,12 +117,12 @@ footer {
   padding: 6px 10px;
   text-align: right;
   -moz-box-sizing: border-box;
-    bottom: 0;
-    position: fixed;
-    top: auto;
-    width: 100%;
-    background-color: #003d4c;
-    text-align: center;
+  bottom: 0;
+  position: fixed;
+  top: auto;
+  width: 100%;
+  background-color: #003d4c;
+  text-align: center;
 }
 
 /** containers **/
