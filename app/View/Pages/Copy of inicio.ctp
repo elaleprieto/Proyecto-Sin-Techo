@@ -3,7 +3,7 @@
 echo $this -> Html -> css(array('jplayer.blue.monday','inicio'));
 
 # JavaScript
-echo $this -> Html -> script(array('jquery.jplayer.min.js', 'inicio.js'));
+echo $this -> Html -> script(array('http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js', 'jquery.jplayer.min.js', 'inicio.js'));
 ?>
 <div id="jquery_jplayer_1"></div>
 <div class="jp-controls-holder">
