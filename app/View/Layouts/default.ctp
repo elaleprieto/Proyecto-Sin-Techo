@@ -96,7 +96,13 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 											</li>
 										</ul>
 									</li>
-
+</head>
+<body>
+	<div id="container">
+		<header>
+			<h1><?php echo $this->Html->link($appDescription, 'http://proyectosintecho.com.ar'); ?></h1>
+		</header>
+		<div id="content">
 									<li>
 										<?=$this -> Html -> link('Género', array('controller' => 'secciones', 'action' => 'view', 5)) ?>
 									</li>
@@ -207,4 +213,16 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 		</script>
 		<?php //echo $this -> Js -> writeBuffer(); ?>
 	</body>
+		<footer>
+			<?php echo $this->Html->link(
+					$this->Html->image('copyleft_30.png', array('alt' => $appDescription, 'border' => '0', 'id' => 'layout_nube')),
+					'http://www.proyectosintecho.com.ar/',
+					array('target' => '_blank', 'escape' => false)
+				);
+			?>
+			<span>Proyecto Final de Carrera :: María Celeste Weidmann y Alejandro Esteban Prieto :: Universidad Tecnológica Nacional - Facultad Regional Santa Fe :: Ingeniería en Sistemas de Información.</span>
+		</footer>
+	</div>
+	<?php echo $this->element('sql_dump'); ?>
+</body>
 </html>

@@ -1,0 +1,48 @@
+@import "compass";
+
+@include font-face("PT Sans", font-files("PT-Sans/PTS55F.ttf"));
+@include font-face("Harabara", font-files("Harabara/Harabara.ttf"));
+@include font-face("Sansation", font-files("sansation/Sansation_Regular.ttf"));
+@include font-face("Neuton", font-files("neuton/Neuton-Regular.ttf"));
+@include font-face("Linux Libertine", font-files("linux_libertine/LinLibertine_RB.ttf"));
+
+ 
+$color-inicial: #89D7D7;
+$color-final: darken($color-inicial, 50%);
+$video-width: 470px;
+$video-height: 320px;
+
+@mixin base($width: 50%, $text-align: left, $display: inline) {
+  width: $width;
+  text-align: $text-align;
+  display: $display;
+}
+
+body {
+  @include background(linear-gradient(left center, $color-inicial, $color-final));
+  height: 100%;
+}
+
+.presentacion {
+  @include base(50%, center, inline-block);
+  text-align: center;
+  vertical-align: top;
+  min-width: $video-width;
+}
+
+.video {
+  @include base($video-width, center, inline-block);
+  height: $video-height;
+  
+}
+
+.texto {
+  @include base(40%, justify, inline-block);
+  padding-right: 5%;
+  padding-left: 1%;
+  padding-top: 2%;
+  min-width: 390px;
+  font-family: "Linux Libertine";
+  font-size: 1.7em; 
+  color: #255C5C;
+}
