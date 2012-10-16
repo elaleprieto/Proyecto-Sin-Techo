@@ -18,31 +18,6 @@ $video-height: 320px;
   display: $display;
 }
 
-body {
-  @include background(linear-gradient(left center, $color-inicial, $color-final));
-  height: 100%;
-}
-
-.presentacion {
-  @include base(50%, center, inline-block);
-  text-align: center;
-  vertical-align: top;
-  min-width: $video-width;
-}
-
-.video {
-  @include base($video-width, center, inline-block);
-  height: $video-height;
-  
-}
-
-.texto {
-  @include base(40%, justify, inline-block);
-  padding-right: 5%;
-  padding-left: 1%;
-  padding-top: 2%;
-  min-width: 390px;
-  font-family: "Linux Libertine";
-  font-size: 1.7em; 
-  color: #255C5C;
+img.brand {
+  height: 1em;
 }

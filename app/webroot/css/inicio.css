@@ -24,43 +24,6 @@
 }
 
 /* line 21, ../sass/inicio.scss */
-body {
-  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #89d7d7), color-stop(100%, #194848));
-  background: -webkit-linear-gradient(left center, #89d7d7, #194848);
-  background: -moz-linear-gradient(left center, #89d7d7, #194848);
-  background: -o-linear-gradient(left center, #89d7d7, #194848);
-  background: linear-gradient(left center, #89d7d7, #194848);
-  height: 100%;
-}
-
-/* line 26, ../sass/inicio.scss */
-.presentacion {
-  width: 50%;
-  text-align: center;
-  display: inline-block;
-  text-align: center;
-  vertical-align: top;
-  min-width: 470px;
-}
-
-/* line 33, ../sass/inicio.scss */
-.video {
-  width: 470px;
-  text-align: center;
-  display: inline-block;
-  height: 320px;
-}
-
-/* line 39, ../sass/inicio.scss */
-.texto {
-  width: 40%;
-  text-align: justify;
-  display: inline-block;
-  padding-right: 5%;
-  padding-left: 1%;
-  padding-top: 2%;
-  min-width: 390px;
-  font-family: "Linux Libertine";
-  font-size: 1.7em;
-  color: #255C5C;
+img.brand {
+  height: 1em;
 }
