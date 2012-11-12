@@ -76,6 +76,10 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
+		# Layout
+		if(isset($this -> request -> params['layout']))
+			$this -> layout = $this -> request -> params['layout'];
+		
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));
 	}
