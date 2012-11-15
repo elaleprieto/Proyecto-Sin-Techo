@@ -27,6 +27,11 @@
  */
 	Router::connect('/', array('layout' => 'login', 'controller' => 'pages', 'action' => 'display', 'login'));
 	Router::connect('/inicio', array('controller' => 'pages', 'action' => 'display', 'inicio'));
+
+	# Pruebas de Concepto
+	Router::connect('/alumno', array('layout' => 'alumno', 'controller' => 'pages', 'action' => 'display', 'alumno'));
+	Router::connect('/profesor', array('layout' => 'profesor', 'controller' => 'pages', 'action' => 'display', 'profesor'));
+	Router::connect('/administrador', array('layout' => 'administrador', 'controller' => 'pages', 'action' => 'display', 'administrador'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

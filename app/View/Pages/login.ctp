@@ -13,7 +13,7 @@ echo $this -> Html -> script(array('login'), array('inline' => FALSE));
 		<h1 class="bienvenido"><small>Bienvenido a</small></h1>
 		<h1>Proyecto Sin Techo</h1>
 		<hr />
-		<form class="form-horizontal" action="inicio">
+		<form class="form-horizontal" action="alumno">
 			<div class="control-group">
 				<label class="control-label" for="inputEmail">Usuario</label>
 				<div class="controls">
@@ -40,6 +40,12 @@ echo $this -> Html -> script(array('login'), array('inline' => FALSE));
 					<button type="button" class="btn">
 						Registrarme
 					</button>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<a href="profesor" class="btn btn-mini">Profesor</a>
+					<a href="administrador" class="btn btn-mini">Administrador</a>
 				</div>
 			</div>
 		</form>
