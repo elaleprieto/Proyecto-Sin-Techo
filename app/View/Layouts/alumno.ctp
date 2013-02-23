@@ -44,7 +44,7 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 		echo $this -> Html -> meta('icon');
 		echo $this -> fetch('meta');
 		# Estilos
-		echo $this -> Html -> css(array('bootstrap', 'bootstrap-responsive', 'main', 'default'));
+		echo $this -> Html -> css(array('bootstrap.min', 'bootstrap-responsive', 'main', 'default'));
 		echo $this -> fetch('css');
 		# Modernizr
 		echo $this -> Html -> script('vendor/modernizr-2.6.1-respond-1.1.0.min');
@@ -74,9 +74,12 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 							<li>
 								<a href="#contact">Contacto</a>
 							</li>
+							<li>
+								<a href="#datos">Mis Datos</a>
+							</li>
 							<!-- 			Menú Más				 -->
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Más <b class="caret"></b></a>
+							<!-- <li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mis Datos <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li>
 										<?=$this -> Html -> link('Mis Datos', '#') ?>
@@ -91,7 +94,7 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 										<?=$this -> Html -> link('Eventos', '#') ?>
 									</li>
 								</ul>
-							</li><!-- 			Fin Menú Más				 -->
+							</li> --><!-- 			Fin Menú Más				 -->
 						</ul>
 					</div><!--/.nav-collapse -->
 				</div>

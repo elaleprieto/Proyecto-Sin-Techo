@@ -1,6 +1,6 @@
 <?
 # CSS
-echo $this -> Html -> css(array('jplayer.blue.monday', 'inicio'), null, array('inline' => FALSE));
+echo $this -> Html -> css(array('jplayer.blue.monday', 'inicio', 'base'), null, array('inline' => FALSE));
 
 # JavaScript
 echo $this -> Html -> script(array('jwplayer', 'inicio'), array('inline' => FALSE));
@@ -13,13 +13,10 @@ echo $this -> Html -> script(array('jwplayer', 'inicio'), array('inline' => FALS
 	</div>
 	<div class="span6">
 		<div class="page-header">
-			<h2>Proyecto Sin Techo <small>Proyecto Final de Carrera</small></h2>
+			<h2>Bienvenido <small>Movimiento Los Sin Techo</small></h2>
 		</div>
 		<p>
-			Bienvenido al Proyecto Sin Techo, una iniciativa nacida de los estudiantes de Ingeniería en Sistemas de Información: María Celeste Weidmann y Alejandro Esteban Prieto.
-		</p>
-		<p>
-			La idea surgió mientras participaban del Laboratorio de Conectividad en la Universidad Tecnológica Nacional - Facultad Regional Santa Fe y fue sugerido como Proyecto Final de Carrera.
+			El Movimiento Los Sin Techo es una organización no gubernamental que trabaja para el desarrollo integral y la organización comunitaria del sector marginado de la ciudad de Santa Fe, Argentina. Desde 1985 ha desarrollado distintas iniciativas tendientes a encontrar respuestas a los problemas estructurales de los más pobres.
 		</p>
 		<p>
 			Esperamos que lo disfrutes.
@@ -27,35 +24,92 @@ echo $this -> Html -> script(array('jwplayer', 'inicio'), array('inline' => FALS
 	</div>
 </div>
 <br />
-<ul class="thumbnails">
-	<li class="span4">
-		<div class="thumbnail">
-			<?= $this -> Html -> image('http://lorempixel.com/450/200/abstract?' . time()); ?>
-			<h3>Noticias</h3>
-			<p>
-				Nullam id lorem sed dolor ultrices feugiat. Morbi lacinia diam sit amet velit pellentesque posuere. Sed tempus, purus a malesuada dignissim, tortor lacus malesuada mauris, nec hendrerit nunc diam at enim. Nunc vitae enim justo, eu accumsan arcu. Fusce blandit placerat vehicula. Nam vitae magna quam. Duis massa magna, porttitor nec scelerisque ut, faucibus non elit. Vivamus at augue sit amet sapien mattis ultrices. Praesent varius erat vel libero scelerisque. 
-			</p>
-			<p><button class="btn btn-primary btn-block">Seguir leyendo <b class="icon-chevron-right icon-white"></b></button></p>
+<div class="row">
+	<div class="span12 borde-grey">
+		<div class="row">
+			<div class="span5 centrado cursos">
+				<?= $this -> Html -> image('http://lorempixel.com/450/200/business/4'); ?>
+			</div>
+			<div class="span6">
+				<h1>Mis Cursos</h1>
+			    <ul class="unstyled">
+			    	<li><a href="curso"><i class="icon-thumbs-up"></i> Ortografía</a></li>
+			    	<li><a><i class="icon-thumbs-up"></i> Historia de Santa Fe</a></li>
+			    </ul>
+			</div>
 		</div>
-	</li>
-	<li class="span4">
-		<div class="thumbnail">
-			<?= $this -> Html -> image('http://lorempixel.com/450/200/nightlife?' . time()); ?>
-			<h3>Eventos</h3>
-			<p>
-				In cursus elit aliquet justo fringilla rutrum porta tortor molestie. Integer convallis tincidunt mi quis elementum. Cras pretium, neque non eleifend bibendum, erat dolor rhoncus dui, id suscipit nisi lectus vel nisi. Praesent quis justo arcu. Morbi vel nibh mauris, sed rutrum est. Phasellus cursus, quam a consectetur scelerisque, metus nulla malesuada est, a viverra purus ipsum quis lorem. Quisque eu justo non ante hendrerit condimentum. Donec nibh odio, rhoncus. 
-			</p>
-			<p><button class="btn btn-primary btn-block">Seguir leyendo<b class="icon-chevron-right icon-white"></b></button></p>
-		</div>
-	</li>
-	<li class="span4">
-		<div class="thumbnail">
-			<?= $this -> Html -> image('http://lorempixel.com/450/200/technics?' . time()); ?>
-			<h3>Mis Cursos</h3>
-			<p>
-				Fusce blandit sollicitudin tempus. In hac habitasse platea dictumst. Sed a mauris magna. Cras consequat, ligula nec eleifend rutrum, nunc nibh pharetra sapien, quis sodales velit tortor vitae elit. Suspendisse suscipit suscipit est, at suscipit tellus bibendum tempus. Aenean eget nisl vel massa feugiat consequat. Nam semper purus purus, a mattis quam. Ut tempor lacinia massa id rhoncus. Vivamus consectetur consequat ipsum id consectetur. Mauris posuere pretium urna. Nulla a. 
-			</p>
-			<p><button class="btn btn-primary btn-block">Seguir leyendo<b class="icon-chevron-right icon-white"></b></button></p>
-		</div>
-	</li>
-</ul>
+	    <br />
+		<p><button class="btn btn-primary btn-block">¡Inscribite a un Curso!<!-- <b class="icon-chevron-right icon-white"></b> --></button></p>
+	</div>
+</div>
+		
+<div class="row">
+	<div class="span6">
+		<h1>Noticias</h1>
+	    <div id="noticiasCarousel" class="carousel slide">
+		    <ol class="carousel-indicators">
+			    <li data-target="#noticiasCarousel" data-slide-to="0" class="active"></li>
+			    <li data-target="#noticiasCarousel" data-slide-to="1"></li>
+			    <li data-target="#noticiasCarousel" data-slide-to="2"></li>
+		    </ol>
+		    <!-- Carousel items -->
+		    <div class="carousel-inner">
+			    <div class="active item">
+			    	<?= $this -> Html -> image('http://lorempixel.com/570/200/abstract?' . time()); ?>
+			    	<div class="carousel-caption">
+			    		<h4>Noticia 1</h4>
+			    	</div>
+		    	</div>
+			    <div class="item">
+			    	<?= $this -> Html -> image('http://lorempixel.com/570/200/abstract?' . time()); ?>
+			    	<div class="carousel-caption">
+			    		<h4>Noticia 2</h4>
+			    	</div>
+		    	</div>
+			    <div class="item">
+			    	<?= $this -> Html -> image('http://lorempixel.com/570/200/abstract?' . time()); ?>
+			    	<div class="carousel-caption">
+			    		<h4>Noticia 3</h4>
+			    	</div>
+		    	</div>
+		    </div>
+		    <!-- Carousel nav -->
+		    <a class="carousel-control left" href="#noticiasCarousel" data-slide="prev">&lsaquo;</a>
+		    <a class="carousel-control right" href="#noticiasCarousel" data-slide="next">&rsaquo;</a>
+	    </div>
+	</div>
+	<div class="span6">
+		<h1>Testimonios</h1>
+	    <div id="testimoniosCarousel" class="carousel slide">
+		    <ol class="carousel-indicators">
+			    <li data-target="#testimoniosCarousel" data-slide-to="0" class="active"></li>
+			    <li data-target="#testimoniosCarousel" data-slide-to="1"></li>
+			    <li data-target="#testimoniosCarousel" data-slide-to="2"></li>
+		    </ol>
+		    <!-- Carousel items -->
+		    <div class="carousel-inner">
+			    <div class="active item">
+			    	<?= $this -> Html -> image('http://lorempixel.com/570/200/abstract?' . time()); ?>
+			    	<div class="carousel-caption">
+			    		<h4>Testimonio 1</h4>
+			    	</div>
+		    	</div>
+			    <div class="item">
+			    	<?= $this -> Html -> image('http://lorempixel.com/570/200/abstract?' . time()); ?>
+			    	<div class="carousel-caption">
+			    		<h4>Testimonio 2</h4>
+			    	</div>
+		    	</div>
+			    <div class="item">
+			    	<?= $this -> Html -> image('http://lorempixel.com/570/200/abstract?' . time()); ?>
+			    	<div class="carousel-caption">
+			    		<h4>Testimonio 3</h4>
+			    	</div>
+		    	</div>
+		    </div>
+		    <!-- Carousel nav -->
+		    <a class="carousel-control left" href="#testimoniosCarousel" data-slide="prev">&lsaquo;</a>
+		    <a class="carousel-control right" href="#testimoniosCarousel" data-slide="next">&rsaquo;</a>
+	    </div>
+	</div>
+</div>

@@ -30,6 +30,8 @@
 
 	# Pruebas de Concepto
 	Router::connect('/alumno', array('layout' => 'alumno', 'controller' => 'pages', 'action' => 'display', 'alumno'));
+	Router::connect('/curso', array('layout' => 'alumno', 'controller' => 'pages', 'action' => 'display', 'curso'));
+	Router::connect('/clase', array('layout' => 'alumno', 'controller' => 'pages', 'action' => 'display', 'clase'));
 	Router::connect('/profesor', array('layout' => 'profesor', 'controller' => 'pages', 'action' => 'display', 'profesor'));
 	Router::connect('/administrador', array('layout' => 'administrador', 'controller' => 'pages', 'action' => 'display', 'administrador'));
 /**
