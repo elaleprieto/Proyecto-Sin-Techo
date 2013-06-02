@@ -13,7 +13,7 @@ echo $this -> Html -> script(array('login'), array('inline' => FALSE));
 		<h1 class="bienvenido"><small>Bienvenido a</small></h1>
 		<h1>Movimiento Los Sin Techo</h1>
 		<hr />
-		<form class="form-horizontal" action="alumno">
+		<form class="form-horizontal" action="cursos">
 			<div class="control-group">
 				<label class="control-label" for="inputEmail">Usuario</label>
 				<div class="controls">

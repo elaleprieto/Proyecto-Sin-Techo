@@ -25,7 +25,8 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('layout' => 'login', 'controller' => 'pages', 'action' => 'display', 'login'));
+	// Router::connect('/', array('layout' => 'login', 'controller' => 'users', 'action' => 'login'));
+	Router::connect('/', array('layout' => 'alumno', 'controller' => 'cursos', 'action' => 'listar'));
 	Router::connect('/inicio', array('controller' => 'pages', 'action' => 'display', 'inicio'));
 
 	# Pruebas de Concepto
@@ -34,6 +35,17 @@
 	Router::connect('/clase', array('layout' => 'alumno', 'controller' => 'pages', 'action' => 'display', 'clase'));
 	Router::connect('/profesor', array('layout' => 'profesor', 'controller' => 'pages', 'action' => 'display', 'profesor'));
 	Router::connect('/administrador', array('layout' => 'administrador', 'controller' => 'pages', 'action' => 'display', 'administrador'));
+
+	Router::connect('/cursos', array('layout' => 'alumno', 'controller' => 'cursos', 'action' => 'listar'));
+	
+	# Redirección Cursos >> Clases >> Etapas
+	// Router::connect('/cursos/:curso/:clase/:etapa', array('layout' => 'alumno', 'controller' => 'etapas', 'action' => 'display', 'clase'));
+	// Router::connect('/:controller/:year/:month/:day', array('action' => 'index'), array('year' => '[12][0-9]{3}', 'month' => '0[1-9]|1[012]', 'day' => '0[1-9]|[12][0-9]|3[01]'));
+
+	# Redirección Clases >> Etapas
+	Router::connect('/clases/:clase/:etapa', array('layout' => 'alumno', 'controller' => 'clases', 'action' => 'derivar'), 
+		array('pass'=>array('clase', 'etapa'), 'clase'=>'[0-9]+','etapa'=>'[0-9]+'));
+	
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

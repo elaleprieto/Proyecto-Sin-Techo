@@ -44,7 +44,7 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 		echo $this -> Html -> meta('icon');
 		echo $this -> fetch('meta');
 		# Estilos
-		echo $this -> Html -> css(array('bootstrap.min', 'bootstrap-responsive', 'main', 'default'));
+		echo $this -> Html -> css(array('bootstrap.min', 'bootstrap-responsive', 'main', 'default', 'layout/alumno'));
 		echo $this -> fetch('css');
 		# Modernizr
 		echo $this -> Html -> script('vendor/modernizr-2.6.1-respond-1.1.0.min');
@@ -61,7 +61,7 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 				<div class="container">
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
 					<!-- <a class="brand" href="#">Trama Tierra</a> -->
-					<?=$this -> Html -> image('nube.png', array('class' => 'brand')); ?>
+					<?php echo $this->Html->image('nube.png', array('class' => 'brand logo')); ?>
 					<?=$this -> Html -> link('Proyecto Sin Techo', '/', array('class' => 'brand')) ?>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
@@ -96,6 +96,10 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 								</ul>
 							</li> --><!-- 			Fin Menú Más				 -->
 						</ul>
+						<p class="navbar-text pull-right">
+							<span id="usernameNav"><?php echo $this->Session->read('Auth.User.name') ?></span>
+							<span id="logoutNav"><?php echo $this->Html->link('Salir', array('controller'=>'users', 'action'=>'logout'), array('class'=>'btn btn-inverse')) ?></span>
+						</p>
 					</div><!--/.nav-collapse -->
 				</div>
 			</div>
@@ -111,7 +115,7 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 			<?php echo $this -> fetch('content'); ?>
 			<!-- 			</div> -->
 			<hr />
-			<footer>
+			<!-- <footer>
 				<div class="row">
 					<div class="span4">
 						<dl>
@@ -171,7 +175,7 @@ $appDescription = __d('app_dev', 'Proyecto Sin Techo');
 						</p>
 					</div>
 				</div>
-			</footer>
+			</footer> -->
 		</div><!-- /container -->
 		<!-- <div class="navbar navbar-inverse navbar-fixed-bottom">
 		<div class="navbar-inner">

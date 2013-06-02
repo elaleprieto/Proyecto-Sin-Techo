@@ -1,18 +1,1 @@
-/* line 1, ../sass/default.sass */
-#copyleft {
-  height: 1em;
-}
-
-/* line 4, ../sass/default.sass */
-#licencia {
-  text-align: center;
-}
-
-/* line 7, ../sass/default.sass */
-footer {
-  background-color: whitesmoke;
-}
-/* line 10, ../sass/default.sass */
-footer dl {
-  padding: 0 10px;
-}
+#copyleft{height:1em}#licencia{text-align:center}footer{background-color:#f5f5f5}footer dl{padding:0 10px}

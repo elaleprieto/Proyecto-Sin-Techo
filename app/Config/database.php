@@ -65,7 +65,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => 'ale',
-		'database' => 'proyecto',
+		'database' => 'proyectosintecho',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
@@ -76,7 +76,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => 'ale',
-		'database' => 'test_proyecto',
+		'database' => 'test_proyectosintecho',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
