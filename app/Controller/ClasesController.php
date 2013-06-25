@@ -32,6 +32,92 @@ class ClasesController extends AppController {
 		$this->set('clase', $this->Clase->read(null, $id));
 	}
 	
+	
+	#######################################################################################################################################
+	#							ALUMNO
+	#######################################################################################################################################
+	
+	/**
+	 * alumno_ver method
+	 *
+	 * @param string $id
+	 * @return void
+	 */
+	public function alumno_ver($id = null) {
+		if(!$this->isAlumno()) {
+			throw new BadRequestException('Alumno inválido');
+		}
+		$this->Clase->id = $id;
+		if (!$this->Clase->exists()) {
+			throw new NotFoundException('Clase inválida');
+		}
+		
+		# Se verifica que el usuario logueado sea quien dicta la clase que se desea visualizar.
+	    App::uses('Alumno', 'Model');
+		$alumno = new Alumno();
+		if(!$this->Clase->asistidaPor($id, $alumno->getAlumnoId(AuthComponent::user('id')))) {
+			throw new NotFoundException('Clase inválida');
+		}
+		
+		$this->set('clase', $this->Clase->read(null, $id));
+	}
+	
+	#######################################################################################################################################
+	#							PROFESOR
+	#######################################################################################################################################
+	
+	
+	/**
+	 * profesor_ver method
+	 *
+	 * @param string $id
+	 * @return void
+	 */
+	public function profesor_agregar($curso_id = null) {
+		if(!$this->isProfesor()) {
+			throw new BadRequestException('Profesor inválido');
+		}
+		if ($this->request->is('post')) {
+			$this->Clase->create();
+			if ($this->Clase->save($this->request->input('json_decode'))) {
+				$this->autorender = false;
+				return;
+			} else {
+				throw new BadRequestException('Ocurrió un problema y la clase no ha sido creada. Intente nuevamente.');
+			}
+		}
+		$this->Clase->Curso->id = $curso_id;
+		if (!$this->Clase->Curso->exists()) {
+			throw new NotFoundException('Curso inválido');
+		}
+		$this->set('curso', $this->Clase->Curso->read(null, $curso_id));
+	}
+	
+	/**
+	 * profesor_ver method
+	 *
+	 * @param string $id
+	 * @return void
+	 */
+	public function profesor_ver($id = null) {
+		if(!$this->isProfesor()) {
+			throw new BadRequestException(__('Invalid profesor'));
+		}
+		$this->Clase->id = $id;
+		if (!$this->Clase->exists()) {
+			throw new NotFoundException('Clase inválida');
+		}
+		
+		# Se verifica que el usuario logueado sea quien dicta la clase que se desea visualizar.
+	    App::uses('Profesor', 'Model');
+		$profesor = new Profesor();
+		if(!$this->Clase->dictadaPor($id, $profesor->getProfesorId(AuthComponent::user('id')))) {
+			throw new NotFoundException(__('Invalid clase'));
+		}
+		
+		$this->set('clase', $this->Clase->read(null, $id));
+	}
+	
 /**
  * ver method
  *

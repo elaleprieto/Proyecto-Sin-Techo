@@ -58,9 +58,9 @@ class User extends AppModel {
  // * @var array
  // */
 	// public $hasMany = array(
-		// 'Noticia' => array(
-			// 'className' => 'Noticia',
-			// 'foreignKey' => 'user_id',
+		// 'Curso' => array(
+			// 'className' => 'Curso',
+			// 'foreignKey' => 'profesor_id',
 			// 'dependent' => false,
 			// 'conditions' => '',
 			// 'fields' => '',
@@ -73,4 +73,20 @@ class User extends AppModel {
 		// )
 	// );
 
+	public $belongsTo = array(
+		'Rol' => array(
+			'className' => 'Rol',
+			'foreignKey' => 'rol_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => array('Rol.name' => 'ASC'),
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+	
 }

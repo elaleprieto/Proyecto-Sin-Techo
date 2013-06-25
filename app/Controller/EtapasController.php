@@ -32,31 +32,155 @@ class EtapasController extends AppController {
 		$this->set('etapa', $this->Etapa->read(null, $id));
 	}
 	
+	
+	#######################################################################################################################################
+	#							PUBLIC
+	#######################################################################################################################################
+	public function set_order() {
+		# Se setea el layout y la vista.
+		# AutoRender = false, evita tener que crear una Vista que no se va a usar.
+		$this->layout = 'ajax';
+		$this->autoRender = FALSE;
+		
+		if ($this->request->isPost()) {
+			$data = $this->request->input('json_decode');
+			
+			if(isset($data->id) && isset($data->order)) { 
+				$this->Etapa->id = $data->id;
+				$this->Etapa->saveField('order', $data->order);
+				return $this->Etapa->field('order');
+			}
+		} 
+	}
+	
+	#######################################################################################################################################
+	#							ALUMNO
+	#######################################################################################################################################
+	
 /**
- * ver method
+ * alumno_ver method
  *
  * @param string $id
  * @return void
  */
-	public function ver($id = null) {
-		$this->layout = 'alumno';
-		$this->Etapa->id = $id;
-		$this->Etapa->recursive = -1;
-		if (!$this->Etapa->exists()) {
-			throw new NotFoundException(__('Invalid etapa'));
+	public function alumno_ver($id = null) {
+		if(!$this->isAlumno()) {
+			throw new BadRequestException('Alumno inválido');
 		}
+		$this->Etapa->id = $id;
+		if (!$this->Etapa->exists()) {
+			throw new NotFoundException('Etapa inválida');
+		}
+		
 		$claseId = $this->Etapa->field('clase_id');
-		$neighbors = $this->Etapa->find('neighbors', array(
-		    'conditions' => array('Etapa.clase_id' => $claseId),
-		    'fields' => array('id'),
+		$etapaOrder = $this->Etapa->field('order');
+		$neighbors = $this->Etapa->find('neighbors', array('conditions' => array('Etapa.clase_id' => $claseId)
+			, 'field' => 'order'
+			, 'value' => $etapaOrder
 		));
-		$pasos = $this->Etapa->find('all', array(
-			'conditions'=>array('clase_id'=>$claseId),
-			'fields'=>array('id', 'order'),
-			'order'=>'order ASC'));
+		$pasos = $this->Etapa->find('all', array('conditions'=>array('clase_id'=>$claseId)
+			, 'fields'=>array('id', 'order')
+			, 'order'=>'order ASC'));
+
 		$this->set('etapa', $this->Etapa->read(null, $id));
 		$this->set(compact('pasos', 'neighbors'));
 	}
+	
+	// $this->layout = 'alumno';
+	// $this->Etapa->id = $id;
+	// $this->Etapa->recursive = -1;
+	// if (!$this->Etapa->exists()) {
+		// throw new NotFoundException(__('Invalid etapa'));
+	// }
+	// $claseId = $this->Etapa->field('clase_id');
+	// $neighbors = $this->Etapa->find('neighbors', array(
+	    // 'conditions' => array('Etapa.clase_id' => $claseId),
+	    // 'fields' => array('id'),
+	// ));
+	// $pasos = $this->Etapa->find('all', array(
+		// 'conditions'=>array('clase_id'=>$claseId),
+		// 'fields'=>array('id', 'order'),
+		// 'order'=>'order ASC'));
+	// $this->set('etapa', $this->Etapa->read(null, $id));
+	// $this->set(compact('pasos', 'neighbors'));
+	
+	#######################################################################################################################################
+	#							PROFESOR
+	#######################################################################################################################################
+	
+	/**
+	 * profesor_ver method
+	 *
+	 * @param string $id
+	 * @return void
+	 */
+	public function profesor_agregar($clase_id = null) {
+		if(!$this->isProfesor()) {
+			throw new BadRequestException('Profesor inválido');
+		}
+		if ($this->request->is('post')) {
+			$this->Etapa->create();
+			if ($this->Etapa->save($this->request->input('json_decode'))) {
+				$this->autorender = false;
+				return;
+			} else {
+				throw new BadRequestException('Ocurrió un problema y la etapa no ha sido creada. Intente nuevamente.');
+			}
+		}
+		$this->Etapa->Clase->id = $clase_id;
+		if (!$this->Etapa->Clase->exists()) {
+			throw new NotFoundException('Clase inválida');
+		}
+		$this->set('clase', $this->Etapa->Clase->read(null, $clase_id));
+	}
+	
+
+/**
+ * profesor_ver method
+ *
+ * @param string $id
+ * @return void
+ */
+	public function profesor_ver($id = null) {
+		if(!$this->isProfesor()) {
+			throw new BadRequestException('Profesor inválido');
+		}
+		$this->Etapa->id = $id;
+		if (!$this->Etapa->exists()) {
+			throw new NotFoundException('Etapa inválida');
+		}
+		$this->set('etapa', $this->Etapa->read(null, $id));
+	}
+	
+	#######################################################################################################################################
+	#							OLD
+	#######################################################################################################################################
+	
+// /**
+ // * ver method
+ // *
+ // * @param string $id
+ // * @return void
+ // */
+	// public function ver($id = null) {
+		// $this->layout = 'alumno';
+		// $this->Etapa->id = $id;
+		// $this->Etapa->recursive = -1;
+		// if (!$this->Etapa->exists()) {
+			// throw new NotFoundException(__('Invalid etapa'));
+		// }
+		// $claseId = $this->Etapa->field('clase_id');
+		// $neighbors = $this->Etapa->find('neighbors', array(
+		    // 'conditions' => array('Etapa.clase_id' => $claseId),
+		    // 'fields' => array('id'),
+		// ));
+		// $pasos = $this->Etapa->find('all', array(
+			// 'conditions'=>array('clase_id'=>$claseId),
+			// 'fields'=>array('id', 'order'),
+			// 'order'=>'order ASC'));
+		// $this->set('etapa', $this->Etapa->read(null, $id));
+		// $this->set(compact('pasos', 'neighbors'));
+	// }
 
 /**
  * add method

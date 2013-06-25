@@ -1,3 +1,5 @@
+<?php debug($cursos) ?>
+
 <div class="cursos index">
 	<h2><?php echo __('Cursos');?></h2>
 	<table cellpadding="0" cellspacing="0">

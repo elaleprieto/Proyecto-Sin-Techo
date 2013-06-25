@@ -7,11 +7,11 @@ App::uses('CakeEmail', 'Network/Email');
  * @property User $User
  */
 class UsersController extends AppController {
-
+	
     public function beforeFilter() {
         parent::beforeFilter();
         // $this -> Auth -> allow('contactar', 'mailup', 'logout');
-        $this -> Auth -> allow('add','edit', 'logout');
+        $this -> Auth -> allow('*');
         // $this -> Auth -> allow('contactar');
     }
 	
@@ -59,12 +59,34 @@ class UsersController extends AppController {
 
         if ($this -> request -> is('post')) {
             if ($this -> Auth -> login()) {
-                $this -> redirect($this -> Auth -> redirect());
+				$this->root();
             } else {
                 $this -> Session -> setFlash(__('Invalid username or password, try again'));
             }
         }
     }
+	
+	/**
+	 * root(): Si el usuario no está logueado, lo redirige al login.
+	 * Si el usuario está logueado, lo redirige al escritorio de su rol, o en su defecto, al escritorio del rol alumno.  
+	 */
+	public function root() {
+		if ($this -> Auth -> login()) {
+        	switch ($this->Session->read('Auth.User.rol_id')) {
+				case parent::ADMIN:
+	                $this -> redirect(array('controller'=>'admin', 'action'=>'escritorio'));
+					break;
+				case parent::PROFESOR:
+	                $this -> redirect(array('controller'=>'profesores', 'action'=>'escritorio'));
+					break;
+				default:
+	                $this->redirect(array('controller'=>'alumnos', 'action'=>'escritorio'));
+					break;
+			}
+        } else {
+            $this->redirect(array('controller'=>'users', 'action'=>'login'));
+        }
+	}
 
     public function logout() {
         $this -> redirect($this -> Auth -> logout());
@@ -90,16 +112,16 @@ class UsersController extends AppController {
         return parent::isAuthorized($user);
     }
 
-    // /**
-     // * index method
-     // *
-     // * @return void
-     // */
-    // public function _index() {
-        // $this -> User -> recursive = 0;
-        // $this -> set('users', $this -> paginate());
-    // }
-// 
+    /**
+     * index method
+     *
+     * @return void
+     */
+    public function index() {
+        $this -> User -> recursive = 0;
+        $this -> set('users', $this -> paginate());
+    }
+
     // /**
      // * view method
      // *
@@ -114,24 +136,25 @@ class UsersController extends AppController {
         // }
         // $this -> set('user', $this -> User -> read(null, $id));
     // }
-// 
-    // /**
-     // * add method
-     // *
-     // * @return void
-     // */
-    // public function add() {
-        // if ($this -> request -> is('post')) {
-            // $this -> User -> create();
-            // if ($this -> User -> save($this -> request -> data)) {
-                // $this -> Session -> setFlash(__('The user has been saved'));
-                // $this -> redirect(array('action' => 'index'));
-            // } else {
-                // $this -> Session -> setFlash(__('The user could not be saved. Please, try again.'));
-            // }
-        // }
-    // }
-// 
+
+    /**
+     * add method
+     *
+     * @return void
+     */
+    public function add() {
+        if ($this -> request -> is('post')) {
+            $this -> User -> create();
+            if ($this -> User -> save($this -> request -> data)) {
+                $this -> Session -> setFlash(__('The user has been saved'));
+                $this -> redirect(array('action' => 'index'));
+            } else {
+                $this -> Session -> setFlash(__('The user could not be saved. Please, try again.'));
+            }
+        }
+		$this->set('roles', $this->User->Rol->find('list', array('order'=>'Rol.name ASC')));
+    }
+
     // /**
      // * edit method
      // *
@@ -153,8 +176,29 @@ class UsersController extends AppController {
             }
         } else {
             $this -> request -> data = $this -> User -> read(null, $id);
+			$this->set('roles', $this->User->Rol->find('list', array('order'=>'Rol.name ASC')));
         }
     }
+	
+	/******************************************************************************************************************************
+	 * 
+	 * 												PROFESOR
+	 * 
+	 ******************************************************************************************************************************/
+	
+	// public function profesor_index() {
+		// if($this->Session->read('Auth.User.rol_id') == self::PROFESOR) {
+			// $id = $this->Session->read('Auth.User.id');
+			// $this -> User -> recursive = 2;
+	        // // $this -> set('users', $this -> paginate());
+			// $this->set('profesor', $this -> User -> read(null, $id));
+		// } else {
+			// // $this->logout();
+			// debug($this->Session->read('Auth.User'));
+		// }
+	// }
+	
+	
 // 
     // /**
      // * delete method

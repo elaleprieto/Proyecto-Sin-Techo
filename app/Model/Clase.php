@@ -73,4 +73,20 @@ class Clase extends AppModel {
 		)
 	);
 
+	
+	public function dictadaPor($clase_id = null, $profesor_id = null) {
+		$cursoId = $this->field('curso_id', array('id'=>$clase_id));
+		$cursoProfesorId = $this->Curso->field('profesor_id', array('id'=>$cursoId));
+		
+		return $profesor_id == $cursoProfesorId;
+	}
+
+	public function asistidaPor($clase_id = null, $alumno_id = null) {
+		$cursoId = $this->field('curso_id', array('id'=>$clase_id));
+		$cursoAlumnoId = $this->Curso->AlumnosCurso->field('alumno_id', array('id'=>$cursoId));
+		
+		return $alumno_id == $cursoAlumnoId;
+	}
+
+
 }

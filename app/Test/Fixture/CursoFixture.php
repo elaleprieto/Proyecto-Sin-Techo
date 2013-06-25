@@ -16,6 +16,7 @@ class CursoFixture extends CakeTestFixture {
 		'description' => array('type' => 'text', 'null' => true, 'default' => NULL, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'created' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'profesor_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'length' => 10),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
 	);
@@ -27,11 +28,12 @@ class CursoFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id' => 1,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-			'created' => '2013-06-02 10:40:59',
-			'modified' => '2013-06-02 10:40:59'
+			'id' => '1',
+			'name' => 'Ortografía',
+			'description' => 'Este es el curso de ortografía',
+			'created' => '2013-06-02 10:51:34',
+			'modified' => '2013-06-02 11:40:44',
+			'profesor_id' => '3'
 		),
 	);
 }

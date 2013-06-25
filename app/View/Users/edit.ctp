@@ -7,6 +7,7 @@
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
 		echo $this->Form->input('name');
+		echo $this->Form->input('rol_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

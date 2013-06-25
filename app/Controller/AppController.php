@@ -32,22 +32,21 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	
+	const ADMIN = 1;
+	const PROFESOR = 2;
+	const ALUMNO = 3;
 
 	public $components = array(
 		'Session',
 		'Auth' => array(
 			'loginAction' => array(
-				'admin'=> FALSE,
+				'admin'=> false,
 				'controller' => 'users', 
 				'action' => 'login'
 			),
-			'loginRedirect' => array(
-				'admin' => TRUE,
-				'controller' => 'cursos',
-				'action' => 'listar'
-			),
 			'logoutRedirect' => array(
-				'admin'=> FALSE,
+				'admin'=> false,
 				'controller' => 'users',
 				'action' => 'login'
 			),
@@ -56,10 +55,17 @@ class AppController extends Controller {
 	);
 
 	public function beforeFilter() {
-		if (AuthComponent::user('role') === 'admin') {
-            $this -> layout = 'admin';
-        }
-        $this->layout = 'alumno';
+		switch (AuthComponent::user('rol_id')) {
+			case self::ADMIN:
+	            $this -> layout = 'administrador';
+				break;
+			case self::PROFESOR:
+	            $this -> layout = 'profesor';
+				break;
+			default:
+		        $this->layout = 'alumno';
+				break;
+		}
 	}
 
 	public function isAuthorized($user) {
@@ -69,6 +75,20 @@ class AppController extends Controller {
 		}
 
 		// Default deny
+		return false;
+	}
+
+	public function isAlumno() {
+		if($this->Session->read('Auth.User.rol_id') == self::ALUMNO) {
+			return true;
+		}
+		return false;
+	}
+
+	public function isProfesor() {
+		if($this->Session->read('Auth.User.rol_id') == self::PROFESOR) {
+			return true;
+		}
 		return false;
 	}
 

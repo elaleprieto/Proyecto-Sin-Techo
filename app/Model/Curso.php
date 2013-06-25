@@ -31,6 +31,21 @@ class Curso extends AppModel {
  *
  * @var array
  */
+	public $belongsTo = array(
+		'Profesor' => array(
+			'className' => 'Profesor',
+			'foreignKey' => 'profesor_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
 	public $hasMany = array(
 		'Clase' => array(
 			'className' => 'Clase',
@@ -46,5 +61,24 @@ class Curso extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+	
+    public $hasAndBelongsToMany = array(
+        'Alumno' =>
+            array(
+                'className'              => 'Alumno',
+                'joinTable'              => 'alumnos_cursos',
+                'foreignKey'             => 'curso_id',
+                'associationForeignKey'  => 'alumno_id',
+                'unique'                 => true,
+                'conditions'             => '',
+                'fields'                 => '',
+                'order'                  => '',
+                'limit'                  => '',
+                'offset'                 => '',
+                'finderQuery'            => '',
+                'deleteQuery'            => '',
+                'insertQuery'            => ''
+            )
+    );
 
 }

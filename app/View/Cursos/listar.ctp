@@ -1,3 +1,5 @@
+<?php debug($cursos) ?>
+
 <div class="row-fluid">
 	<div class="span12">
 		<h2>Cursos</h2>

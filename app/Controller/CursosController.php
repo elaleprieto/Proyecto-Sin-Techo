@@ -29,18 +29,50 @@ class CursosController extends AppController {
 		$this->set('cursos', $this->paginate());
 	}
 
+	#######################################################################################################################################
+	#							ALUMNO
+	#######################################################################################################################################
+
 /**
- * view method
+ * alumno_ver method
  *
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
-		$this->Curso->id = $id;
-		if (!$this->Curso->exists()) {
-			throw new NotFoundException(__('Invalid curso'));
+	public function alumno_ver($id = null) {
+		if($this->isAlumno()) {
+			$this->Curso->id = $id;
+			if (!$this->Curso->exists()) {
+				throw new NotFoundException(__('Invalid curso'));
+			}
+			# ContainBehaivor
+			$this->Curso->recursive = 2;
+			$this->set('curso', $this->Curso->read(null, $id));
 		}
-		$this->set('curso', $this->Curso->read(null, $id));
+	}
+
+	
+	
+	#######################################################################################################################################
+	#							PROFESOR
+	#######################################################################################################################################
+
+/**
+ * profesor_ver method
+ *
+ * @param string $id
+ * @return void
+ */
+	public function profesor_ver($id = null) {
+		if($this->isProfesor()) {
+			$this->Curso->id = $id;
+			if (!$this->Curso->exists()) {
+				throw new NotFoundException(__('Invalid curso'));
+			}
+			# ContainBehaivor
+			$this->Curso->recursive = 2;
+			$this->set('curso', $this->Curso->read(null, $id));
+		}
 	}
 	
 /**

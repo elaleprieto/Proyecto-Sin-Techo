@@ -2,7 +2,7 @@
 /**
  * This file is loaded automatically by the app/webroot/index.php file after core.php
  *
- * This file should load/create any application wide configuration settings, such as 
+ * This file should load/create any application wide configuration settings, such as
  * Caching, Logging, loading additional configuration files.
  *
  * You should also use this file to include any files that provide global functions/constants
@@ -129,3 +129,7 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+
+// Reglas a pluralizar: "ubicacion -> ubicaciones", "rol -> roles", "profesor" -> "profesores"
+Inflector::rules('singular', array('rules' => array('/(.*)nes$/i' => '\1n', '/(.*)les$/i' => '\1l', '/(.*)ores$/i' => '\1or', '/(.*)des$/i' => '\1d'), 'irregular' => array(), 'uninflected' => array()));
+Inflector::rules('plural', array('rules' => array('/(.*)n$/i' => '\1nes', '/(.*)l$/i' => '\1les', '/(.*)or$/i' => '\1ores', '/(.*)d$/i' => '\1des'), 'irregular' => array(), 'uninflected' => array()));
